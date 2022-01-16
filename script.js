@@ -1,6 +1,5 @@
 const botao = document.querySelector('button');
 const totalPeronagens = 3;
-
 traduzirCondicao = (data) => {
     if(data.status == 'unknown'){
         return 'Não sabemos';
@@ -15,7 +14,7 @@ gerarValorAletorio = () => {
     return Math.floor(Math.random() * 671);
 }
 
-pegarPersonagem = () => {
+pegarPersonagem = (imagem, nomeDoPersonagem, especie, condicao) => {
     let numeroAleatorio = gerarValorAletorio();
     return fetch(`https://rickandmortyapi.com/api/character/${numeroAleatorio}`, {
         method:'GET',
@@ -33,10 +32,14 @@ pegarPersonagem = () => {
 }
 
 gerarRepeticaoPersonagem = () => {
-    const imagem = document.querySelector('img');
-    const nomeDoPersonagem = document.querySelector('#nome');
-    const especie = document.querySelector('#especie');
-    const condicao = document.querySelector('#status');
+    for ( var i = 0; i < totalPeronagens; i++ ) {
+        const imagem = document.querySelector('#imagem-' + i);
+        const nomeDoPersonagem = document.querySelector('#nome-'+ i);
+        const especie = document.querySelector('#especie-'+ i);
+        const condicao = document.querySelector('#status-' + i);
+         pegarPersonagem(imagem, nomeDoPersonagem, especie, condicao)
+    }
+    
 }
 
 botao.onclick = gerarRepeticaoPersonagem;
