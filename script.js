@@ -1,18 +1,21 @@
 const botao = document.querySelector('button');
 const totalPeronagens = 3;
-traduzirCondicao = (data) => {
-    if(data.status == 'unknown'){
-        return 'Não sabemos';
-    }else if(data.status == 'Alive'){
-        return 'Sim';
-    }else {
-        return 'Não. Está morto';
+
+gerarRepeticaoPersonagem = () => {
+    for ( var i = 0; i < totalPeronagens; i++ ) {
+        const condicao = document.querySelector('#status-' + i);
+        const especie = document.querySelector('#especie-'+ i);
+        const imagem = document.querySelector('#imagem-' + i);
+        const nomeDoPersonagem = document.querySelector('#nome-'+ i);
+         pegarPersonagem(imagem, nomeDoPersonagem, especie, condicao)
     }
+    
 }
 
 gerarValorAletorio = () => {
     return Math.floor(Math.random() * 671);
 }
+
 
 pegarPersonagem = (imagem, nomeDoPersonagem, especie, condicao) => {
     let numeroAleatorio = gerarValorAletorio();
@@ -31,15 +34,15 @@ pegarPersonagem = (imagem, nomeDoPersonagem, especie, condicao) => {
     });
 }
 
-gerarRepeticaoPersonagem = () => {
-    for ( var i = 0; i < totalPeronagens; i++ ) {
-        const imagem = document.querySelector('#imagem-' + i);
-        const nomeDoPersonagem = document.querySelector('#nome-'+ i);
-        const especie = document.querySelector('#especie-'+ i);
-        const condicao = document.querySelector('#status-' + i);
-         pegarPersonagem(imagem, nomeDoPersonagem, especie, condicao)
+traduzirCondicao = (data) => {
+    if(data.status == 'unknown'){
+        return 'Não sabemos';
+    }else if(data.status == 'Alive'){
+        return 'Sim';
+    }else {
+        return 'Não. Está morto';
     }
-    
 }
+
 
 botao.onclick = gerarRepeticaoPersonagem;
