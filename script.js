@@ -1,8 +1,5 @@
-const imagem = document.querySelector('img');
 const botao = document.querySelector('button');
-const nomeDoPersonagem = document.querySelector('#nome');
-const especie = document.querySelector('#especie');
-const condicao = document.querySelector('#status');
+const totalPeronagens = 3;
 
 traduzirCondicao = (data) => {
     if(data.status == 'unknown'){
@@ -35,4 +32,11 @@ pegarPersonagem = () => {
     });
 }
 
-botao.onclick = pegarPersonagem;
+gerarRepeticaoPersonagem = () => {
+    const imagem = document.querySelector('img');
+    const nomeDoPersonagem = document.querySelector('#nome');
+    const especie = document.querySelector('#especie');
+    const condicao = document.querySelector('#status');
+}
+
+botao.onclick = gerarRepeticaoPersonagem;
